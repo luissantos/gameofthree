@@ -1,0 +1,14 @@
+subprojects {
+    apply plugin: 'java'
+}
+
+project(':client') {
+
+}
+
+project(':server') {
+    
+}
+
+
+

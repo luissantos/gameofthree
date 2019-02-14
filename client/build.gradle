@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '2.1.2.RELEASE'
+}
+
+apply plugin: "jacoco"
+apply plugin: 'io.spring.dependency-management'
+
+jacoco {
+    toolVersion = "0.8.1"
+}
+
+repositories {
+    jcenter()
+}
+
+jar {
+    enabled = true
+}
+
+bootJar {
+    enabled = true
+}
+
+dependencies {
+    compile group: 'io.netty', name: 'netty-all', version: '4.1.33.Final'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.19.RELEASE'
+    compile 'org.apache.directory.studio:org.apache.commons.io:2.4'
+
+    compile project(":common")
+    implementation 'com.google.guava:guava:26.0-jre'
+    testImplementation 'junit:junit:4.12'
+}
+
+mainClassName = 'pt.luissantos.gameofthree.ClientApplication'
