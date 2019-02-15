@@ -1,14 +1,14 @@
 # Introduction
 
 This project implements a game of three  server and a client. The server accepts simultaneous games but each
-game can be played by 2 players.
+game can only be played by 2 players.
 The clients are designed to play automatically until the game finishes.
 
 ## Technical architecture
 
-This project follows a classic client-server architecture. The clients use websockets to communicate with the server.
+This project follows a classic client-server architecture. The communication between the client and the server is done using websockets.
 
-Both the server and the client were written using Java and Netty. Netty is a framework designed to build high performing network applications.
+Both the server and the client are written using Java and Netty. Netty is a framework designed to build high performing network applications.
 Some of the reasons to choose netty:
 
 * Nonblocking-IO support
@@ -73,19 +73,18 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-ext
 # Testing and quality assurance
 
 The test suite covers the most relevant parts of the code base.
-Some parts of the codebase such as the Server boostrapping and configuration don't benefit form
-unit testing. Instead integration tests would be more suitable.
-The supplied test client can be used as an integration test suite to validate that the server is working as expected.
+Some parts of the codebase such as the network connection boostrapping and configuratin don't benefit form
+unit testing and integration tests are used instead.
 
 ## How to run the test suit
     ./gradlew test jacocoTestReport
-
 
 # Future improvements
 
 * Handle misbehaved clients. The current implementation doesn't care if the message was delivered
 and doesn't deal with slow clients. A misbehaved client could cause the system to run out of memory
 * Improve client unit tests
+* Improve integration tests
 
 
 # Testing the game
